@@ -1,0 +1,23 @@
+{
+  "name": "vehicle-management-system",
+  "version": "1.0.0",
+  "description": "Vehicle Management System - Node.js, Express, MongoDB, EJS MVC project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Student",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "ejs": "^3.1.10",
+    "dotenv": "^16.4.5",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

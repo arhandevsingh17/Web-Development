@@ -1,0 +1,128 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="container">
+
+  <!-- Statistics Section -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <h4>Total Vehicles</h4>
+      <p id="statTotal">0</p>
+    </div>
+    <div class="stat-box">
+      <h4>Average Price</h4>
+      <p id="statAvg">Rs. 0</p>
+    </div>
+    <div class="stat-box">
+      <h4>Highest Price Vehicle</h4>
+      <p id="statHighest">-</p>
+    </div>
+    <div class="stat-box">
+      <h4>Lowest Price Vehicle</h4>
+      <p id="statLowest">-</p>
+    </div>
+  </div>
+
+  <!-- Add Vehicle Form -->
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 id="formTitle">Add New Vehicle</h3>
+    </div>
+    <div class="panel-body">
+      <form id="vehicleForm">
+        <input type="hidden" id="vehicleId">
+        <table class="form-table">
+          <tr>
+            <td><label for="vehicleName">Vehicle Name</label></td>
+            <td>
+              <input type="text" id="vehicleName" placeholder="Ex: Swift, Creta" required>
+            </td>
+            <td><label for="company">Company</label></td>
+            <td>
+              <input type="text" id="company" placeholder="Ex: Maruti, Hyundai" required>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="model">Model</label></td>
+            <td>
+              <input type="text" id="model" placeholder="Ex: VXI, SX 2024" required>
+            </td>
+            <td><label for="price">Price (Rs.)</label></td>
+            <td>
+              <input type="number" id="price" placeholder="Ex: 750000" min="1" required>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="color">Color</label></td>
+            <td>
+              <input type="text" id="color" placeholder="Ex: White, Red" required>
+            </td>
+            <td colspan="2"></td>
+          </tr>
+        </table>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Add Vehicle</button>
+          <button type="button" class="btn btn-outline" id="cancelEditBtn" style="display:none;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Search / Sort / Export Controls -->
+  <div class="panel">
+    <div class="panel-body controls">
+      <div class="control-group">
+        <label for="searchInput">Search:</label>
+        <input type="text" id="searchInput" placeholder="Search by name, company, model or color">
+      </div>
+
+      <div class="control-group">
+        <label for="sortField">Sort By:</label>
+        <select id="sortField">
+          <option value="">-- None --</option>
+          <option value="vehicleName">Vehicle Name</option>
+          <option value="company">Company</option>
+          <option value="price">Price</option>
+        </select>
+
+        <select id="sortDir">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <a href="/api/vehicles/export/csv" class="btn btn-secondary">Export CSV</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vehicle Table -->
+  <div class="panel">
+    <div class="panel-heading">
+      <h3>Vehicle Records (<span id="recordCount">0</span>)</h3>
+    </div>
+    <div class="panel-body">
+      <table class="data-table" id="vehicleTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Vehicle Name</th>
+            <th>Company</th>
+            <th>Model</th>
+            <th>Price (Rs.)</th>
+            <th>Color</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="7" class="no-data">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<%- include('partials/footer') %>
